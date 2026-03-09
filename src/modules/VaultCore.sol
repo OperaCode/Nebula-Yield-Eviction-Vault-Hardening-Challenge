@@ -13,7 +13,7 @@ contract VaultCore is VaultStorage {
     event Withdrawal(address indexed withdrawer, uint256 amount);
     
     event Claim(address indexed claimant, uint256 amount);
-    
+
 
     receive() external payable {
 
@@ -69,7 +69,8 @@ contract VaultCore is VaultStorage {
         // Prevent vault underflow
         require(address(this).balance >= amount, "insufficient vault balance");
 
-
+        
+       
         bytes32 leaf = keccak256(abi.encodePacked(msg.sender, amount));
 
         require(
