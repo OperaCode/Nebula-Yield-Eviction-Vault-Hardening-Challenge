@@ -22,15 +22,20 @@ contract VaultTest is Test {
 
     function testDeposit() public {
 
-        vm.prank(address(0x789));
+        address user = address(0x789);
 
+        vm.deal(user, 1 ether);   // fund user
+
+        vm.prank(user);
         vault.deposit{value: 0.5 ether}();
 
-        assertEq(vault.balances(address(0x789)), 0.5 ether);
+        assertEq(vault.balances(user), 0.5 ether);
         assertEq(vault.totalVaultValue(), 1.5 ether);
     }
 
     function testWithdraw() public {
+
+        vm.deal(owner1, 2 ether);  // fund owner
 
         vm.prank(owner1);
         vault.deposit{value: 1 ether}();
@@ -51,6 +56,8 @@ contract VaultTest is Test {
     }
 
     function testEmergencyWithdrawOwner() public {
+
+        vm.deal(owner1, 2 ether);  // fund owner
 
         vm.prank(owner1);
         vault.deposit{value: 1 ether}();
