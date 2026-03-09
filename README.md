@@ -20,17 +20,23 @@ This repository demonstrates a **refactored implementation** that improves maint
 
 ---
 
-# Project Structure
-src/
-├─ EvictionVault.sol
-└─ modules/
-    ├─ VaultStorage.sol
-    ├─ VaultCore.sol
-    └─ VaultGovernance.sol
+## Project Structure
 
-test/
-└─ Vault.t.sol
-
+```
+.
+├── src
+│   ├── EvictionVault.sol
+│   └── modules
+│       ├── VaultStorage.sol
+│       ├── VaultCore.sol
+│       └── VaultGovernance.sol
+│
+├── test
+│   └── Vault.t.sol
+│
+├── foundry.toml
+└── README.md
+```
 ---
 
 
